@@ -32,7 +32,23 @@ struct AddWaterView: View {
                 }
                 .padding()
                 
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("Instructions")
+                        .font(.headline)
+                        .padding(.horizontal)
+                    
+                    VStack(spacing: 15) {
+                        InstructionRow(number: "1", text: "Place your water bottle on a flat surface")
+                        InstructionRow(number: "2", text: "Ensure good lighting")
+                        InstructionRow(number: "3", text: "Center the bottle in frame")
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(15)
+                    .shadow(radius: 2)
                 }
+                .padding(.horizontal)
+                
                 Button(action: {
                     imageProcessingViewModel.isShowingCamera = true
                 }) {
