@@ -1,15 +1,21 @@
-//
-//  ContentView.swift
-//  Nutrition Tracker
-//
-//  Created by Ananth Kashyap on 12/3/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    
     var body: some View {
-        HomePageView()
+        Group {
+            if userViewModel.isAuthenticated {
+                HomePageView()
+            } else {
+                AuthenticationView()
+            }
+        }
+        .alert("Error", isPresented: .constant(userViewModel.error != nil)) {
+            Button("OK") { userViewModel.clearError() }
+        } message: {
+            Text(userViewModel.error?.localizedDescription ?? "")
+        }
     }
 }
 

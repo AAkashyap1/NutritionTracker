@@ -1,31 +1,9 @@
-//
-//  HomePageView.swift
-//  Nutrition Tracker
-//
-//  Created by Ananth Kashyap on 12/3/24.
-//
-
 import Foundation
 import SwiftUI
 
 struct HomePageView: View {
-    @State private var dailyProgress = DailyProgress(
-        calories: 1200,
-        protein: 75,
-        carbs: 150,
-        fats: 50,
-        fiber: 20,
-        water: 1.5
-    )
-    
-    @State private var goals = NutritionGoals(
-        dailyCalories: 2000,
-        protein: 150,
-        carbs: 200,
-        fats: 70,
-        fiber: 30,
-        water: 3.0
-    )
+    @EnvironmentObject var userViewModel: UserViewModel
+    @StateObject private var imageProcessingViewModel = ImageProcessingViewModel()
     
     var body: some View {
         NavigationView {
@@ -50,13 +28,13 @@ struct HomePageView: View {
                             .fill(Color.green.opacity(0.1))
                         
                         HStack(spacing: 20) {
-                            CircularProgressBar(progress: dailyProgress.calories / goals.dailyCalories)
+                            CircularProgressBar(progress: userViewModel.dailyProgress.calories / userViewModel.nutritionGoals.dailyCalories)
                                 .frame(width: 120, height: 120)
                             
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Daily Calories")
                                     .font(.headline)
-                                Text("\(Int(dailyProgress.calories))/\(Int(goals.dailyCalories))")
+                                Text("\(Int(userViewModel.dailyProgress.calories))/\(Int(userViewModel.nutritionGoals.dailyCalories))")
                                     .font(.title2)
                                     .fontWeight(.bold)
                                 Text("kcal remaining")
@@ -70,7 +48,7 @@ struct HomePageView: View {
                     .padding(.horizontal)
                     
                     VStack(alignment: .leading, spacing: 15) {
-                        VStack(alignment: .leading, spacing: 15) {  // Added alignment: .leading here
+                        VStack(alignment: .leading, spacing: 15) {
                             HStack {
                                 Image(systemName: "chart.bar.fill")
                                     .foregroundColor(.green)
@@ -78,10 +56,10 @@ struct HomePageView: View {
                                     .font(.headline)
                             }
                             
-                            MacroProgressBar(label: "Protein", value: dailyProgress.protein, goal: goals.protein, color: .blue)
-                            MacroProgressBar(label: "Carbs", value: dailyProgress.carbs, goal: goals.carbs, color: .green)
-                            MacroProgressBar(label: "Fats", value: dailyProgress.fats, goal: goals.fats, color: .orange)
-                            MacroProgressBar(label: "Fiber", value: dailyProgress.fiber, goal: goals.fiber, color: .purple)
+                            MacroProgressBar(label: "Protein", value: userViewModel.dailyProgress.protein, goal: userViewModel.nutritionGoals.protein, color: .blue)
+                            MacroProgressBar(label: "Carbs", value: userViewModel.dailyProgress.carbs, goal: userViewModel.nutritionGoals.carbs, color: .green)
+                            MacroProgressBar(label: "Fats", value: userViewModel.dailyProgress.fats, goal: userViewModel.nutritionGoals.fats, color: .orange)
+                            MacroProgressBar(label: "Fiber", value: userViewModel.dailyProgress.fiber, goal: userViewModel.nutritionGoals.fiber, color: .purple)
                         }
                         .padding()
                         .background(Color.white)
@@ -90,7 +68,7 @@ struct HomePageView: View {
                     }
                     .padding(.horizontal)
                     
-                    WaterProgressCard(intake: dailyProgress.water, goal: goals.water)
+                    WaterProgressCard(intake: userViewModel.dailyProgress.water, goal: userViewModel.nutritionGoals.water)
                         .padding(.horizontal)
                     
                     VStack(alignment: .leading, spacing: 15) {
@@ -99,11 +77,11 @@ struct HomePageView: View {
                             .padding(.horizontal)
                         
                         HStack(spacing: 15) {
-                            NavigationLink(destination: AddWaterView()) {
+                            Button(action: { imageProcessingViewModel.isShowingCamera = true }) {
                                 QuickActionButton(title: "Add Water", icon: "drop.fill", color: .blue)
                             }
                             
-                            NavigationLink(destination: AddFoodView()) {
+                            Button(action: { imageProcessingViewModel.isShowingCamera = true }) {
                                 QuickActionButton(title: "Add Food", icon: "fork.knife", color: .green)
                             }
                             
@@ -118,6 +96,19 @@ struct HomePageView: View {
             }
             .background(Color(UIColor.systemGroupedBackground))
             .navigationBarHidden(true)
+            .sheet(isPresented: $imageProcessingViewModel.isShowingCamera) {
+                ImagePicker(sourceType: .camera, selectedImage: $imageProcessingViewModel.selectedImage)
+                    .onDisappear {
+                        Task {
+                            await imageProcessingViewModel.processImage(for: .nutritionLabel)
+                        }
+                    }
+            }
+            .alert("Error", isPresented: .constant(imageProcessingViewModel.error != nil)) {
+                Button("OK") { imageProcessingViewModel.clearError() }
+            } message: {
+                Text(imageProcessingViewModel.error?.localizedDescription ?? "")
+            }
         }
     }
 }

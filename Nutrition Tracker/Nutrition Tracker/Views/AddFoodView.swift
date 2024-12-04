@@ -1,38 +1,28 @@
-//
-//  AddFoodScreen.swift
-//  Nutrition Tracker
-//
-//  Created by Ananth Kashyap on 12/4/24.
-//
-
 import Foundation
 import SwiftUI
 
 struct AddFoodView: View {
-    @Environment(\.dismiss) var dismiss
-    @State private var showCamera = false
-    @State private var showingInstructions = true
+    @EnvironmentObject var userViewModel: UserViewModel
+    @StateObject private var imageProcessingViewModel = ImageProcessingViewModel()
     
     var body: some View {
         ScrollView {
             VStack(spacing: 25) {
-                if showingInstructions {
-                    VStack(alignment: .leading, spacing: 20) {
-                        Text("How to Scan Nutrition Labels")
-                            .font(.headline)
-                        
-                        VStack(alignment: .leading, spacing: 15) {
-                            InstructionRow(number: "1", text: "Flatten the nutrition label")
-                            InstructionRow(number: "2", text: "Ensure good lighting")
-                            InstructionRow(number: "3", text: "Hold camera steady")
-                            InstructionRow(number: "4", text: "Center the label in frame")
-                        }
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("How to Scan Nutrition Labels")
+                        .font(.headline)
+                    
+                    VStack(alignment: .leading, spacing: 15) {
+                        InstructionRow(number: "1", text: "Flatten the nutrition label")
+                        InstructionRow(number: "2", text: "Ensure good lighting")
+                        InstructionRow(number: "3", text: "Hold camera steady")
+                        InstructionRow(number: "4", text: "Center the label in frame")
                     }
-                    .padding()
-                    .background(Color.green.opacity(0.1))
-                    .cornerRadius(12)
-                    .padding()
                 }
+                .padding()
+                .background(Color.green.opacity(0.1))
+                .cornerRadius(12)
+                .padding()
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 12)
@@ -49,7 +39,7 @@ struct AddFoodView: View {
                 }
                 .padding()
                 
-                Button(action: { showCamera = true }) {
+                Button(action: { imageProcessingViewModel.isShowingCamera = true }) {
                     Label("Scan Label", systemImage: "camera")
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -62,6 +52,19 @@ struct AddFoodView: View {
                 Spacer()
             }
             .navigationTitle("Add Food")
+            .sheet(isPresented: $imageProcessingViewModel.isShowingCamera) {
+                ImagePicker(sourceType: .camera, selectedImage: $imageProcessingViewModel.selectedImage)
+                    .onDisappear {
+                        Task {
+                            await imageProcessingViewModel.processImage(for: .nutritionLabel)
+                        }
+                    }
+            }
+            .alert("Error", isPresented: .constant(imageProcessingViewModel.error != nil)) {
+                Button("OK") { imageProcessingViewModel.clearError() }
+            } message: {
+                Text(imageProcessingViewModel.error?.localizedDescription ?? "")
+            }
         }
     }
 }

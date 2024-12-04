@@ -1,23 +1,9 @@
-//
-//  ProfileView.swift
-//  Nutrition Tracker
-//
-//  Created by Ananth Kashyap on 12/4/24.
-//
-
 import Foundation
 import SwiftUI
 
 struct ProfileView: View {
     @Environment(\.dismiss) var dismiss
-    @State private var user = User(
-        name: "John Doe",
-        age: 28,
-        weight: 75.0,
-        height: 175.0,
-        goalWeight: 70.0,
-        joinDate: Date()
-    )
+    @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
         ScrollView {
@@ -27,12 +13,14 @@ struct ProfileView: View {
                         .font(.system(size: 80))
                         .foregroundColor(.green)
                     
-                    Text(user.name)
+                    Text(userViewModel.currentUser?.name ?? "User")
                         .font(.title)
                         .fontWeight(.bold)
                     
-                    Text("Active since \(user.joinDate.formatted(date: .abbreviated, time: .omitted))")
-                        .foregroundColor(.gray)
+                    if let joinDate = userViewModel.currentUser?.createdAt {
+                        Text("Active since \(joinDate.formatted(date: .abbreviated, time: .omitted))")
+                            .foregroundColor(.gray)
+                    }
                 }
                 .padding(.top, 40)
                 
@@ -40,10 +28,10 @@ struct ProfileView: View {
                     GridItem(.flexible()),
                     GridItem(.flexible())
                 ], spacing: 20) {
-                    StatCard(title: "Current Weight", value: "\(Int(user.weight)) kg", icon: "scalemass.fill")
-                    StatCard(title: "Goal Weight", value: "\(Int(user.goalWeight)) kg", icon: "target")
-                    StatCard(title: "Height", value: "\(Int(user.height)) cm", icon: "arrow.up.and.down")
-                    StatCard(title: "Age", value: "\(user.age)", icon: "number")
+                    StatCard(title: "Current Weight", value: "\(Int(userViewModel.currentUser?.weight ?? 0)) kg", icon: "scalemass.fill")
+                    StatCard(title: "Goal Weight", value: "\(Int(userViewModel.currentUser?.goalWeight ?? 0)) kg", icon: "target")
+                    StatCard(title: "Height", value: "\(Int(userViewModel.currentUser?.height ?? 0)) cm", icon: "arrow.up.and.down")
+                    StatCard(title: "Age", value: "\(userViewModel.currentUser?.age ?? 0)", icon: "number")
                 }
                 .padding(.horizontal)
                 
@@ -57,7 +45,9 @@ struct ProfileView: View {
                         SettingsRow(icon: "bell", title: "Notifications")
                         SettingsRow(icon: "target", title: "Goals")
                         SettingsRow(icon: "arrow.counterclockwise", title: "Reset Progress")
-                        SettingsRow(icon: "rectangle.portrait.and.arrow.right", title: "Sign Out")
+                        Button(action: { userViewModel.signOut() }) {
+                            SettingsRow(icon: "rectangle.portrait.and.arrow.right", title: "Sign Out")
+                        }
                     }
                     .background(Color.white)
                     .cornerRadius(15)
