@@ -1,34 +1,65 @@
-from firebase_admin import credentials, firestore, auth
-import firebase_admin
-from datetime import datetime, timedelta
+from firebase_admin import credentials, firestore, auth, initialize_app
+from fastapi import HTTPException
 from typing import Dict, Any, Optional
+from datetime import datetime
+import asyncio
 
 
 class FirebaseManager:
     def __init__(self, config_path: str):
-        cred = credentials.Certificate(config_path)
         try:
-            firebase_admin.initialize_app(cred)
-        except ValueError:
-            pass
-        self.db = firestore.client()
+            try:
+                self.app = initialize_app(credentials.Certificate(config_path))
+            except ValueError:
+                pass
 
-    async def create_user(self, email: str, password: str, user_data: Dict[str, Any]) -> Dict[str, Any]:
+            self.db = firestore.client()
+            print("Firebase initialized successfully")
+        except Exception as e:
+            print(f"Firebase initialization error: {str(e)}")
+            raise
+
+    async def create_user_profile(self, user_id: str, profile_data: dict) -> dict:
         try:
-            user = auth.create_user(
-                email=email,
-                password=password
+            print(
+                f"Attempting to create user profile with data: {profile_data}")
+
+            doc_ref = self.db.collection('users').document(user_id)
+            doc_ref.set(profile_data)
+
+            doc = doc_ref.get()
+            if not doc.exists:
+                raise Exception("Failed to verify document creation")
+
+            print(f"Successfully created user profile for {user_id}")
+            return profile_data
+
+        except Exception as e:
+            print(f"Detailed Firestore Error: {str(e)}")
+            raise HTTPException(
+                status_code=400,
+                detail=f"Failed to create user profile: {str(e)}"
             )
 
-            user_ref = self.db.collection('users').document(user.uid)
-            user_ref.set({
-                **user_data,
-                'created_at': firestore.SERVER_TIMESTAMP
-            })
-
-            return {'status': 'success', 'user_id': user.uid}
+    async def sign_in_user(self, email: str, password: str) -> dict:
+        try:
+            user = auth.get_user_by_email(email)
+            doc = self.db.collection('users').document(user.uid).get()
+            if not doc.exists:
+                raise HTTPException(
+                    status_code=404, detail="User profile not found")
+            return doc.to_dict()
         except Exception as e:
-            return {'status': 'error', 'message': str(e)}
+            raise HTTPException(status_code=400, detail=str(e))
+
+    async def get_user(self, user_id: str) -> dict:
+        try:
+            doc = self.db.collection('users').document(user_id).get()
+            if not doc.exists:
+                raise HTTPException(status_code=404, detail="User not found")
+            return doc.to_dict()
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=str(e))
 
     async def get_daily_progress(self, user_id: str) -> Optional[Dict[str, Any]]:
         try:

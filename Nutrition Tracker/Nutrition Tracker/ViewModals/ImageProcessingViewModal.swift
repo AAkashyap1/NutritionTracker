@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import UIKit
 
@@ -22,11 +23,9 @@ class ImageProcessingViewModel: ObservableObject {
             switch type {
             case .nutritionLabel:
                 let nutritionData = try await NetworkManager.shared.processNutritionLabel(image: imageData, userId: userId)
-                // The backend will automatically update daily progress
                 
             case .waterBottle:
                 let waterData = try await NetworkManager.shared.processWaterBottle(image: imageData, userId: userId)
-                // The backend will automatically update daily progress
             }
             
             selectedImage = nil
@@ -44,4 +43,4 @@ class ImageProcessingViewModel: ObservableObject {
 enum ImageProcessingType {
     case nutritionLabel
     case waterBottle
-} 
+}

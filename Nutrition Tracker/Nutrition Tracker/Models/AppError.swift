@@ -1,4 +1,6 @@
-enum AppError: Error, LocalizedError {
+import Foundation
+
+enum AppError: LocalizedError {
     case networkError(String)
     case authenticationError(String)
     case imageProcessingError(String)
@@ -20,4 +22,4 @@ enum AppError: Error, LocalizedError {
         case .unknown: return "An unknown error occurred"
         }
     }
-} 
+}

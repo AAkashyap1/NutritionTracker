@@ -7,77 +7,111 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F81535E62D0015CB00920364 /* Nutrition_TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81535E52D0015CB00920364 /* Nutrition_TrackerApp.swift */; };
-		F81535E82D0015CB00920364 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81535E72D0015CB00920364 /* ContentView.swift */; };
-		F81535EA2D0015CC00920364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F81535E92D0015CC00920364 /* Assets.xcassets */; };
-		F81535ED2D0015CC00920364 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F81535EC2D0015CC00920364 /* Preview Assets.xcassets */; };
-		F81535F72D0015CC00920364 /* Nutrition_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81535F62D0015CC00920364 /* Nutrition_TrackerTests.swift */; };
-		F81536012D0015CC00920364 /* Nutrition_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81536002D0015CC00920364 /* Nutrition_TrackerUITests.swift */; };
-		F81536032D0015CC00920364 /* Nutrition_TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81536022D0015CC00920364 /* Nutrition_TrackerUITestsLaunchTests.swift */; };
-		F81536112D00185300920364 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81536102D00185300920364 /* HomePageView.swift */; };
-		F815361B2D00216F00920364 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815361A2D00216F00920364 /* AuthenticationView.swift */; };
-		F815361D2D0021A100920364 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815361C2D0021A100920364 /* CreateAccountView.swift */; };
-		F815361F2D0022F300920364 /* AddWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815361E2D0022F300920364 /* AddWaterView.swift */; };
-		F81536212D00233100920364 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81536202D00233100920364 /* AddFoodView.swift */; };
-		F81536232D00248D00920364 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81536222D00248D00920364 /* ProfileView.swift */; };
-		F81536272D0026C200920364 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81536262D0026C200920364 /* Models.swift */; };
-		F81536292D00270400920364 /* HelperViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81536282D00270400920364 /* HelperViews.swift */; };
+		F8AFF7A82D007E6900C06A47 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFF7A72D007E6900C06A47 /* ImagePicker.swift */; };
+		F8AFF7AB2D00804800C06A47 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AFF7AA2D00804800C06A47 /* Data+Extensions.swift */; };
+		F8AFF7AD2D00829000C06A47 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8AFF7AC2D00829000C06A47 /* GoogleService-Info.plist */; };
+		F8F3B60E2D0075A900EF7DAB /* Nutrition_TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B60D2D0075A900EF7DAB /* Nutrition_TrackerApp.swift */; };
+		F8F3B6102D0075A900EF7DAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B60F2D0075A900EF7DAB /* ContentView.swift */; };
+		F8F3B6122D0075AA00EF7DAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8F3B6112D0075AA00EF7DAB /* Assets.xcassets */; };
+		F8F3B6152D0075AA00EF7DAB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8F3B6142D0075AA00EF7DAB /* Preview Assets.xcassets */; };
+		F8F3B61F2D0075AA00EF7DAB /* Nutrition_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B61E2D0075AA00EF7DAB /* Nutrition_TrackerTests.swift */; };
+		F8F3B6292D0075AA00EF7DAB /* Nutrition_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B6282D0075AA00EF7DAB /* Nutrition_TrackerUITests.swift */; };
+		F8F3B62B2D0075AA00EF7DAB /* Nutrition_TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B62A2D0075AA00EF7DAB /* Nutrition_TrackerUITestsLaunchTests.swift */; };
+		F8F3B63D2D00763200EF7DAB /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B63C2D00763200EF7DAB /* AddFoodView.swift */; };
+		F8F3B63F2D00764F00EF7DAB /* AddWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B63E2D00764F00EF7DAB /* AddWaterView.swift */; };
+		F8F3B6412D00766F00EF7DAB /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B6402D00766F00EF7DAB /* AuthenticationView.swift */; };
+		F8F3B6432D00767B00EF7DAB /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B6422D00767B00EF7DAB /* CreateAccountView.swift */; };
+		F8F3B6452D00768500EF7DAB /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B6442D00768500EF7DAB /* HomePageView.swift */; };
+		F8F3B6472D00768D00EF7DAB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B6462D00768D00EF7DAB /* ProfileView.swift */; };
+		F8F3B64A2D0076FC00EF7DAB /* ImageProcessingViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B6492D0076FC00EF7DAB /* ImageProcessingViewModal.swift */; };
+		F8F3B64C2D00770800EF7DAB /* UserViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B64B2D00770800EF7DAB /* UserViewModal.swift */; };
+		F8F3B64E2D00773E00EF7DAB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B64D2D00773E00EF7DAB /* NetworkManager.swift */; };
+		F8F3B6502D00776200EF7DAB /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B64F2D00776200EF7DAB /* AppError.swift */; };
+		F8F3B6542D00791800EF7DAB /* NutritionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B6532D00791800EF7DAB /* NutritionModels.swift */; };
+		F8F3B6562D00792F00EF7DAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B6552D00792F00EF7DAB /* User.swift */; };
+		F8F3B6582D00795100EF7DAB /* HelperViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F3B6572D00795100EF7DAB /* HelperViews.swift */; };
+		F8F3B65B2D007B9000EF7DAB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8F3B65A2D007B9000EF7DAB /* FirebaseAuth */; };
+		F8F3B65D2D007B9000EF7DAB /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = F8F3B65C2D007B9000EF7DAB /* FirebaseCore */; };
+		F8F3B65F2D007BAB00EF7DAB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8F3B65E2D007BAB00EF7DAB /* FirebaseAuth */; };
+		F8F3B6612D007BAB00EF7DAB /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = F8F3B6602D007BAB00EF7DAB /* FirebaseCore */; };
+		F8F3B6632D007BD200EF7DAB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F8F3B6622D007BD200EF7DAB /* FirebaseAnalytics */; };
+		F8F3B6652D007BD200EF7DAB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8F3B6642D007BD200EF7DAB /* FirebaseAuth */; };
+		F8F3B6672D007BD200EF7DAB /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = F8F3B6662D007BD200EF7DAB /* FirebaseCore */; };
+		F8F3B6692D007C1A00EF7DAB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8F3B6682D007C1A00EF7DAB /* FirebaseAuth */; };
+		F8F3B66B2D007C1A00EF7DAB /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = F8F3B66A2D007C1A00EF7DAB /* FirebaseCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F81535F32D0015CC00920364 /* PBXContainerItemProxy */ = {
+		F8F3B61B2D0075AA00EF7DAB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F81535DA2D0015CB00920364 /* Project object */;
+			containerPortal = F8F3B6022D0075A900EF7DAB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F81535E12D0015CB00920364;
+			remoteGlobalIDString = F8F3B6092D0075A900EF7DAB;
 			remoteInfo = "Nutrition Tracker";
 		};
-		F81535FD2D0015CC00920364 /* PBXContainerItemProxy */ = {
+		F8F3B6252D0075AA00EF7DAB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F81535DA2D0015CB00920364 /* Project object */;
+			containerPortal = F8F3B6022D0075A900EF7DAB /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F81535E12D0015CB00920364;
+			remoteGlobalIDString = F8F3B6092D0075A900EF7DAB;
 			remoteInfo = "Nutrition Tracker";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F81535E22D0015CB00920364 /* Nutrition Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nutrition Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F81535E52D0015CB00920364 /* Nutrition_TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition_TrackerApp.swift; sourceTree = "<group>"; };
-		F81535E72D0015CB00920364 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F81535E92D0015CC00920364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F81535EC2D0015CC00920364 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F81535F22D0015CC00920364 /* Nutrition TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nutrition TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F81535F62D0015CC00920364 /* Nutrition_TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition_TrackerTests.swift; sourceTree = "<group>"; };
-		F81535FC2D0015CC00920364 /* Nutrition TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nutrition TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F81536002D0015CC00920364 /* Nutrition_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition_TrackerUITests.swift; sourceTree = "<group>"; };
-		F81536022D0015CC00920364 /* Nutrition_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F81536102D00185300920364 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
-		F815361A2D00216F00920364 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
-		F815361C2D0021A100920364 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
-		F815361E2D0022F300920364 /* AddWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaterView.swift; sourceTree = "<group>"; };
-		F81536202D00233100920364 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
-		F81536222D00248D00920364 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		F81536262D0026C200920364 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		F81536282D00270400920364 /* HelperViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperViews.swift; sourceTree = "<group>"; };
+		F8AFF7A72D007E6900C06A47 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F8AFF7AA2D00804800C06A47 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
+		F8AFF7AC2D00829000C06A47 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F8F3B60A2D0075A900EF7DAB /* Nutrition Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nutrition Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8F3B60D2D0075A900EF7DAB /* Nutrition_TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition_TrackerApp.swift; sourceTree = "<group>"; };
+		F8F3B60F2D0075A900EF7DAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F8F3B6112D0075AA00EF7DAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F8F3B6142D0075AA00EF7DAB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F8F3B61A2D0075AA00EF7DAB /* Nutrition TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nutrition TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8F3B61E2D0075AA00EF7DAB /* Nutrition_TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition_TrackerTests.swift; sourceTree = "<group>"; };
+		F8F3B6242D0075AA00EF7DAB /* Nutrition TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nutrition TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8F3B6282D0075AA00EF7DAB /* Nutrition_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition_TrackerUITests.swift; sourceTree = "<group>"; };
+		F8F3B62A2D0075AA00EF7DAB /* Nutrition_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrition_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F8F3B63C2D00763200EF7DAB /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
+		F8F3B63E2D00764F00EF7DAB /* AddWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaterView.swift; sourceTree = "<group>"; };
+		F8F3B6402D00766F00EF7DAB /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		F8F3B6422D00767B00EF7DAB /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		F8F3B6442D00768500EF7DAB /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		F8F3B6462D00768D00EF7DAB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F8F3B6492D0076FC00EF7DAB /* ImageProcessingViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingViewModal.swift; sourceTree = "<group>"; };
+		F8F3B64B2D00770800EF7DAB /* UserViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModal.swift; sourceTree = "<group>"; };
+		F8F3B64D2D00773E00EF7DAB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F8F3B64F2D00776200EF7DAB /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		F8F3B6532D00791800EF7DAB /* NutritionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionModels.swift; sourceTree = "<group>"; };
+		F8F3B6552D00792F00EF7DAB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F8F3B6572D00795100EF7DAB /* HelperViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F81535DF2D0015CB00920364 /* Frameworks */ = {
+		F8F3B6072D0075A900EF7DAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8F3B65D2D007B9000EF7DAB /* FirebaseCore in Frameworks */,
+				F8F3B6652D007BD200EF7DAB /* FirebaseAuth in Frameworks */,
+				F8F3B65F2D007BAB00EF7DAB /* FirebaseAuth in Frameworks */,
+				F8F3B6612D007BAB00EF7DAB /* FirebaseCore in Frameworks */,
+				F8F3B6672D007BD200EF7DAB /* FirebaseCore in Frameworks */,
+				F8F3B6632D007BD200EF7DAB /* FirebaseAnalytics in Frameworks */,
+				F8F3B65B2D007B9000EF7DAB /* FirebaseAuth in Frameworks */,
+				F8F3B66B2D007C1A00EF7DAB /* FirebaseCore in Frameworks */,
+				F8F3B6692D007C1A00EF7DAB /* FirebaseAuth in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8F3B6172D0075AA00EF7DAB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F81535EF2D0015CC00920364 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F81535F92D0015CC00920364 /* Frameworks */ = {
+		F8F3B6212D0075AA00EF7DAB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -87,174 +121,217 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F81535D92D0015CB00920364 = {
+		F8AFF7A92D00803500C06A47 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F81535E42D0015CB00920364 /* Nutrition Tracker */,
-				F81535F52D0015CC00920364 /* Nutrition TrackerTests */,
-				F81535FF2D0015CC00920364 /* Nutrition TrackerUITests */,
-				F81535E32D0015CB00920364 /* Products */,
+				F8AFF7AA2D00804800C06A47 /* Data+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F8F3B6012D0075A900EF7DAB = {
+			isa = PBXGroup;
+			children = (
+				F8AFF7AC2D00829000C06A47 /* GoogleService-Info.plist */,
+				F8F3B60C2D0075A900EF7DAB /* Nutrition Tracker */,
+				F8F3B61D2D0075AA00EF7DAB /* Nutrition TrackerTests */,
+				F8F3B6272D0075AA00EF7DAB /* Nutrition TrackerUITests */,
+				F8F3B60B2D0075A900EF7DAB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F81535E32D0015CB00920364 /* Products */ = {
+		F8F3B60B2D0075A900EF7DAB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F81535E22D0015CB00920364 /* Nutrition Tracker.app */,
-				F81535F22D0015CC00920364 /* Nutrition TrackerTests.xctest */,
-				F81535FC2D0015CC00920364 /* Nutrition TrackerUITests.xctest */,
+				F8F3B60A2D0075A900EF7DAB /* Nutrition Tracker.app */,
+				F8F3B61A2D0075AA00EF7DAB /* Nutrition TrackerTests.xctest */,
+				F8F3B6242D0075AA00EF7DAB /* Nutrition TrackerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F81535E42D0015CB00920364 /* Nutrition Tracker */ = {
+		F8F3B60C2D0075A900EF7DAB /* Nutrition Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				F81535E52D0015CB00920364 /* Nutrition_TrackerApp.swift */,
-				F81535E72D0015CB00920364 /* ContentView.swift */,
-				F815360F2D00184400920364 /* Views */,
-				F81535E92D0015CC00920364 /* Assets.xcassets */,
-				F81536252D00263400920364 /* Components */,
-				F81536242D00262B00920364 /* Models */,
-				F81535EB2D0015CC00920364 /* Preview Content */,
+				F8AFF7A92D00803500C06A47 /* Extensions */,
+				F8F3B60D2D0075A900EF7DAB /* Nutrition_TrackerApp.swift */,
+				F8F3B6392D00760C00EF7DAB /* Networking */,
+				F8F3B6382D00760600EF7DAB /* Components */,
+				F8F3B60F2D0075A900EF7DAB /* ContentView.swift */,
+				F8F3B6372D00760100EF7DAB /* Models */,
+				F8F3B6112D0075AA00EF7DAB /* Assets.xcassets */,
+				F8F3B6482D0076EA00EF7DAB /* ViewModals */,
+				F8F3B63B2D00761F00EF7DAB /* Views */,
+				F8F3B6132D0075AA00EF7DAB /* Preview Content */,
 			);
 			path = "Nutrition Tracker";
 			sourceTree = "<group>";
 		};
-		F81535EB2D0015CC00920364 /* Preview Content */ = {
+		F8F3B6132D0075AA00EF7DAB /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				F81535EC2D0015CC00920364 /* Preview Assets.xcassets */,
+				F8F3B6142D0075AA00EF7DAB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		F81535F52D0015CC00920364 /* Nutrition TrackerTests */ = {
+		F8F3B61D2D0075AA00EF7DAB /* Nutrition TrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				F81535F62D0015CC00920364 /* Nutrition_TrackerTests.swift */,
+				F8F3B61E2D0075AA00EF7DAB /* Nutrition_TrackerTests.swift */,
 			);
 			path = "Nutrition TrackerTests";
 			sourceTree = "<group>";
 		};
-		F81535FF2D0015CC00920364 /* Nutrition TrackerUITests */ = {
+		F8F3B6272D0075AA00EF7DAB /* Nutrition TrackerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				F81536002D0015CC00920364 /* Nutrition_TrackerUITests.swift */,
-				F81536022D0015CC00920364 /* Nutrition_TrackerUITestsLaunchTests.swift */,
+				F8F3B6282D0075AA00EF7DAB /* Nutrition_TrackerUITests.swift */,
+				F8F3B62A2D0075AA00EF7DAB /* Nutrition_TrackerUITestsLaunchTests.swift */,
 			);
 			path = "Nutrition TrackerUITests";
 			sourceTree = "<group>";
 		};
-		F815360F2D00184400920364 /* Views */ = {
+		F8F3B6372D00760100EF7DAB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F81536102D00185300920364 /* HomePageView.swift */,
-				F815361A2D00216F00920364 /* AuthenticationView.swift */,
-				F815361C2D0021A100920364 /* CreateAccountView.swift */,
-				F815361E2D0022F300920364 /* AddWaterView.swift */,
-				F81536202D00233100920364 /* AddFoodView.swift */,
-				F81536222D00248D00920364 /* ProfileView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		F81536242D00262B00920364 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				F81536262D0026C200920364 /* Models.swift */,
+				F8F3B64F2D00776200EF7DAB /* AppError.swift */,
+				F8F3B6532D00791800EF7DAB /* NutritionModels.swift */,
+				F8F3B6552D00792F00EF7DAB /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F81536252D00263400920364 /* Components */ = {
+		F8F3B6382D00760600EF7DAB /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				F81536282D00270400920364 /* HelperViews.swift */,
+				F8F3B6572D00795100EF7DAB /* HelperViews.swift */,
+				F8AFF7A72D007E6900C06A47 /* ImagePicker.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		F8F3B6392D00760C00EF7DAB /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F8F3B64D2D00773E00EF7DAB /* NetworkManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F8F3B63B2D00761F00EF7DAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F8F3B63C2D00763200EF7DAB /* AddFoodView.swift */,
+				F8F3B63E2D00764F00EF7DAB /* AddWaterView.swift */,
+				F8F3B6402D00766F00EF7DAB /* AuthenticationView.swift */,
+				F8F3B6442D00768500EF7DAB /* HomePageView.swift */,
+				F8F3B6462D00768D00EF7DAB /* ProfileView.swift */,
+				F8F3B6422D00767B00EF7DAB /* CreateAccountView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F8F3B6482D0076EA00EF7DAB /* ViewModals */ = {
+			isa = PBXGroup;
+			children = (
+				F8F3B6492D0076FC00EF7DAB /* ImageProcessingViewModal.swift */,
+				F8F3B64B2D00770800EF7DAB /* UserViewModal.swift */,
+			);
+			path = ViewModals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F81535E12D0015CB00920364 /* Nutrition Tracker */ = {
+		F8F3B6092D0075A900EF7DAB /* Nutrition Tracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F81536062D0015CC00920364 /* Build configuration list for PBXNativeTarget "Nutrition Tracker" */;
+			buildConfigurationList = F8F3B62E2D0075AA00EF7DAB /* Build configuration list for PBXNativeTarget "Nutrition Tracker" */;
 			buildPhases = (
-				F81535DE2D0015CB00920364 /* Sources */,
-				F81535DF2D0015CB00920364 /* Frameworks */,
-				F81535E02D0015CB00920364 /* Resources */,
+				F8F3B6062D0075A900EF7DAB /* Sources */,
+				F8F3B6072D0075A900EF7DAB /* Frameworks */,
+				F8F3B6082D0075A900EF7DAB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Nutrition Tracker";
+			packageProductDependencies = (
+				F8F3B65A2D007B9000EF7DAB /* FirebaseAuth */,
+				F8F3B65C2D007B9000EF7DAB /* FirebaseCore */,
+				F8F3B65E2D007BAB00EF7DAB /* FirebaseAuth */,
+				F8F3B6602D007BAB00EF7DAB /* FirebaseCore */,
+				F8F3B6622D007BD200EF7DAB /* FirebaseAnalytics */,
+				F8F3B6642D007BD200EF7DAB /* FirebaseAuth */,
+				F8F3B6662D007BD200EF7DAB /* FirebaseCore */,
+				F8F3B6682D007C1A00EF7DAB /* FirebaseAuth */,
+				F8F3B66A2D007C1A00EF7DAB /* FirebaseCore */,
+			);
 			productName = "Nutrition Tracker";
-			productReference = F81535E22D0015CB00920364 /* Nutrition Tracker.app */;
+			productReference = F8F3B60A2D0075A900EF7DAB /* Nutrition Tracker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F81535F12D0015CC00920364 /* Nutrition TrackerTests */ = {
+		F8F3B6192D0075AA00EF7DAB /* Nutrition TrackerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F81536092D0015CC00920364 /* Build configuration list for PBXNativeTarget "Nutrition TrackerTests" */;
+			buildConfigurationList = F8F3B6312D0075AA00EF7DAB /* Build configuration list for PBXNativeTarget "Nutrition TrackerTests" */;
 			buildPhases = (
-				F81535EE2D0015CC00920364 /* Sources */,
-				F81535EF2D0015CC00920364 /* Frameworks */,
-				F81535F02D0015CC00920364 /* Resources */,
+				F8F3B6162D0075AA00EF7DAB /* Sources */,
+				F8F3B6172D0075AA00EF7DAB /* Frameworks */,
+				F8F3B6182D0075AA00EF7DAB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F81535F42D0015CC00920364 /* PBXTargetDependency */,
+				F8F3B61C2D0075AA00EF7DAB /* PBXTargetDependency */,
 			);
 			name = "Nutrition TrackerTests";
 			productName = "Nutrition TrackerTests";
-			productReference = F81535F22D0015CC00920364 /* Nutrition TrackerTests.xctest */;
+			productReference = F8F3B61A2D0075AA00EF7DAB /* Nutrition TrackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F81535FB2D0015CC00920364 /* Nutrition TrackerUITests */ = {
+		F8F3B6232D0075AA00EF7DAB /* Nutrition TrackerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F815360C2D0015CC00920364 /* Build configuration list for PBXNativeTarget "Nutrition TrackerUITests" */;
+			buildConfigurationList = F8F3B6342D0075AA00EF7DAB /* Build configuration list for PBXNativeTarget "Nutrition TrackerUITests" */;
 			buildPhases = (
-				F81535F82D0015CC00920364 /* Sources */,
-				F81535F92D0015CC00920364 /* Frameworks */,
-				F81535FA2D0015CC00920364 /* Resources */,
+				F8F3B6202D0075AA00EF7DAB /* Sources */,
+				F8F3B6212D0075AA00EF7DAB /* Frameworks */,
+				F8F3B6222D0075AA00EF7DAB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F81535FE2D0015CC00920364 /* PBXTargetDependency */,
+				F8F3B6262D0075AA00EF7DAB /* PBXTargetDependency */,
 			);
 			name = "Nutrition TrackerUITests";
 			productName = "Nutrition TrackerUITests";
-			productReference = F81535FC2D0015CC00920364 /* Nutrition TrackerUITests.xctest */;
+			productReference = F8F3B6242D0075AA00EF7DAB /* Nutrition TrackerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F81535DA2D0015CB00920364 /* Project object */ = {
+		F8F3B6022D0075A900EF7DAB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					F81535E12D0015CB00920364 = {
+					F8F3B6092D0075A900EF7DAB = {
 						CreatedOnToolsVersion = 15.4;
 					};
-					F81535F12D0015CC00920364 = {
+					F8F3B6192D0075AA00EF7DAB = {
 						CreatedOnToolsVersion = 15.4;
-						TestTargetID = F81535E12D0015CB00920364;
+						TestTargetID = F8F3B6092D0075A900EF7DAB;
 					};
-					F81535FB2D0015CC00920364 = {
+					F8F3B6232D0075AA00EF7DAB = {
 						CreatedOnToolsVersion = 15.4;
-						TestTargetID = F81535E12D0015CB00920364;
+						TestTargetID = F8F3B6092D0075A900EF7DAB;
 					};
 				};
 			};
-			buildConfigurationList = F81535DD2D0015CB00920364 /* Build configuration list for PBXProject "Nutrition Tracker" */;
+			buildConfigurationList = F8F3B6052D0075A900EF7DAB /* Build configuration list for PBXProject "Nutrition Tracker" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -262,36 +339,40 @@
 				en,
 				Base,
 			);
-			mainGroup = F81535D92D0015CB00920364;
-			productRefGroup = F81535E32D0015CB00920364 /* Products */;
+			mainGroup = F8F3B6012D0075A900EF7DAB;
+			packageReferences = (
+				F8F3B6592D0079FE00EF7DAB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = F8F3B60B2D0075A900EF7DAB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F81535E12D0015CB00920364 /* Nutrition Tracker */,
-				F81535F12D0015CC00920364 /* Nutrition TrackerTests */,
-				F81535FB2D0015CC00920364 /* Nutrition TrackerUITests */,
+				F8F3B6092D0075A900EF7DAB /* Nutrition Tracker */,
+				F8F3B6192D0075AA00EF7DAB /* Nutrition TrackerTests */,
+				F8F3B6232D0075AA00EF7DAB /* Nutrition TrackerUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F81535E02D0015CB00920364 /* Resources */ = {
+		F8F3B6082D0075A900EF7DAB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F81535ED2D0015CC00920364 /* Preview Assets.xcassets in Resources */,
-				F81535EA2D0015CC00920364 /* Assets.xcassets in Resources */,
+				F8F3B6152D0075AA00EF7DAB /* Preview Assets.xcassets in Resources */,
+				F8F3B6122D0075AA00EF7DAB /* Assets.xcassets in Resources */,
+				F8AFF7AD2D00829000C06A47 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F81535F02D0015CC00920364 /* Resources */ = {
+		F8F3B6182D0075AA00EF7DAB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F81535FA2D0015CC00920364 /* Resources */ = {
+		F8F3B6222D0075AA00EF7DAB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -301,57 +382,64 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F81535DE2D0015CB00920364 /* Sources */ = {
+		F8F3B6062D0075A900EF7DAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F81535E82D0015CB00920364 /* ContentView.swift in Sources */,
-				F81536112D00185300920364 /* HomePageView.swift in Sources */,
-				F81535E62D0015CB00920364 /* Nutrition_TrackerApp.swift in Sources */,
-				F815361D2D0021A100920364 /* CreateAccountView.swift in Sources */,
-				F81536212D00233100920364 /* AddFoodView.swift in Sources */,
-				F815361B2D00216F00920364 /* AuthenticationView.swift in Sources */,
-				F81536272D0026C200920364 /* Models.swift in Sources */,
-				F81536232D00248D00920364 /* ProfileView.swift in Sources */,
-				F81536292D00270400920364 /* HelperViews.swift in Sources */,
-				F815361F2D0022F300920364 /* AddWaterView.swift in Sources */,
+				F8F3B6472D00768D00EF7DAB /* ProfileView.swift in Sources */,
+				F8F3B6432D00767B00EF7DAB /* CreateAccountView.swift in Sources */,
+				F8AFF7A82D007E6900C06A47 /* ImagePicker.swift in Sources */,
+				F8F3B6102D0075A900EF7DAB /* ContentView.swift in Sources */,
+				F8F3B64C2D00770800EF7DAB /* UserViewModal.swift in Sources */,
+				F8F3B64E2D00773E00EF7DAB /* NetworkManager.swift in Sources */,
+				F8F3B6542D00791800EF7DAB /* NutritionModels.swift in Sources */,
+				F8F3B63F2D00764F00EF7DAB /* AddWaterView.swift in Sources */,
+				F8F3B6562D00792F00EF7DAB /* User.swift in Sources */,
+				F8F3B60E2D0075A900EF7DAB /* Nutrition_TrackerApp.swift in Sources */,
+				F8F3B6582D00795100EF7DAB /* HelperViews.swift in Sources */,
+				F8F3B64A2D0076FC00EF7DAB /* ImageProcessingViewModal.swift in Sources */,
+				F8F3B6502D00776200EF7DAB /* AppError.swift in Sources */,
+				F8AFF7AB2D00804800C06A47 /* Data+Extensions.swift in Sources */,
+				F8F3B63D2D00763200EF7DAB /* AddFoodView.swift in Sources */,
+				F8F3B6452D00768500EF7DAB /* HomePageView.swift in Sources */,
+				F8F3B6412D00766F00EF7DAB /* AuthenticationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F81535EE2D0015CC00920364 /* Sources */ = {
+		F8F3B6162D0075AA00EF7DAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F81535F72D0015CC00920364 /* Nutrition_TrackerTests.swift in Sources */,
+				F8F3B61F2D0075AA00EF7DAB /* Nutrition_TrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F81535F82D0015CC00920364 /* Sources */ = {
+		F8F3B6202D0075AA00EF7DAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F81536032D0015CC00920364 /* Nutrition_TrackerUITestsLaunchTests.swift in Sources */,
-				F81536012D0015CC00920364 /* Nutrition_TrackerUITests.swift in Sources */,
+				F8F3B62B2D0075AA00EF7DAB /* Nutrition_TrackerUITestsLaunchTests.swift in Sources */,
+				F8F3B6292D0075AA00EF7DAB /* Nutrition_TrackerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F81535F42D0015CC00920364 /* PBXTargetDependency */ = {
+		F8F3B61C2D0075AA00EF7DAB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F81535E12D0015CB00920364 /* Nutrition Tracker */;
-			targetProxy = F81535F32D0015CC00920364 /* PBXContainerItemProxy */;
+			target = F8F3B6092D0075A900EF7DAB /* Nutrition Tracker */;
+			targetProxy = F8F3B61B2D0075AA00EF7DAB /* PBXContainerItemProxy */;
 		};
-		F81535FE2D0015CC00920364 /* PBXTargetDependency */ = {
+		F8F3B6262D0075AA00EF7DAB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F81535E12D0015CB00920364 /* Nutrition Tracker */;
-			targetProxy = F81535FD2D0015CC00920364 /* PBXContainerItemProxy */;
+			target = F8F3B6092D0075A900EF7DAB /* Nutrition Tracker */;
+			targetProxy = F8F3B6252D0075AA00EF7DAB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		F81536042D0015CC00920364 /* Debug */ = {
+		F8F3B62C2D0075AA00EF7DAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -414,7 +502,7 @@
 			};
 			name = Debug;
 		};
-		F81536052D0015CC00920364 /* Release */ = {
+		F8F3B62D2D0075AA00EF7DAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -470,7 +558,7 @@
 			};
 			name = Release;
 		};
-		F81536072D0015CC00920364 /* Debug */ = {
+		F8F3B62F2D0075AA00EF7DAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -499,7 +587,7 @@
 			};
 			name = Debug;
 		};
-		F81536082D0015CC00920364 /* Release */ = {
+		F8F3B6302D0075AA00EF7DAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -528,7 +616,7 @@
 			};
 			name = Release;
 		};
-		F815360A2D0015CC00920364 /* Debug */ = {
+		F8F3B6322D0075AA00EF7DAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -548,7 +636,7 @@
 			};
 			name = Debug;
 		};
-		F815360B2D0015CC00920364 /* Release */ = {
+		F8F3B6332D0075AA00EF7DAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -568,7 +656,7 @@
 			};
 			name = Release;
 		};
-		F815360D2D0015CC00920364 /* Debug */ = {
+		F8F3B6352D0075AA00EF7DAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -586,7 +674,7 @@
 			};
 			name = Debug;
 		};
-		F815360E2D0015CC00920364 /* Release */ = {
+		F8F3B6362D0075AA00EF7DAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -607,43 +695,93 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F81535DD2D0015CB00920364 /* Build configuration list for PBXProject "Nutrition Tracker" */ = {
+		F8F3B6052D0075A900EF7DAB /* Build configuration list for PBXProject "Nutrition Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F81536042D0015CC00920364 /* Debug */,
-				F81536052D0015CC00920364 /* Release */,
+				F8F3B62C2D0075AA00EF7DAB /* Debug */,
+				F8F3B62D2D0075AA00EF7DAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F81536062D0015CC00920364 /* Build configuration list for PBXNativeTarget "Nutrition Tracker" */ = {
+		F8F3B62E2D0075AA00EF7DAB /* Build configuration list for PBXNativeTarget "Nutrition Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F81536072D0015CC00920364 /* Debug */,
-				F81536082D0015CC00920364 /* Release */,
+				F8F3B62F2D0075AA00EF7DAB /* Debug */,
+				F8F3B6302D0075AA00EF7DAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F81536092D0015CC00920364 /* Build configuration list for PBXNativeTarget "Nutrition TrackerTests" */ = {
+		F8F3B6312D0075AA00EF7DAB /* Build configuration list for PBXNativeTarget "Nutrition TrackerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F815360A2D0015CC00920364 /* Debug */,
-				F815360B2D0015CC00920364 /* Release */,
+				F8F3B6322D0075AA00EF7DAB /* Debug */,
+				F8F3B6332D0075AA00EF7DAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F815360C2D0015CC00920364 /* Build configuration list for PBXNativeTarget "Nutrition TrackerUITests" */ = {
+		F8F3B6342D0075AA00EF7DAB /* Build configuration list for PBXNativeTarget "Nutrition TrackerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F815360D2D0015CC00920364 /* Debug */,
-				F815360E2D0015CC00920364 /* Release */,
+				F8F3B6352D0075AA00EF7DAB /* Debug */,
+				F8F3B6362D0075AA00EF7DAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F8F3B6592D0079FE00EF7DAB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F8F3B65A2D007B9000EF7DAB /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseAuth;
+		};
+		F8F3B65C2D007B9000EF7DAB /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseCore;
+		};
+		F8F3B65E2D007BAB00EF7DAB /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseAuth;
+		};
+		F8F3B6602D007BAB00EF7DAB /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseCore;
+		};
+		F8F3B6622D007BD200EF7DAB /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseAnalytics;
+		};
+		F8F3B6642D007BD200EF7DAB /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseAuth;
+		};
+		F8F3B6662D007BD200EF7DAB /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseCore;
+		};
+		F8F3B6682D007C1A00EF7DAB /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseAuth;
+		};
+		F8F3B66A2D007C1A00EF7DAB /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = F81535DA2D0015CB00920364 /* Project object */;
+	rootObject = F8F3B6022D0075A900EF7DAB /* Project object */;
 }

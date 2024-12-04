@@ -3,7 +3,15 @@ from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
-from .models.schemas import *
+from .models.schemas import (
+    User,
+    NutritionData,
+    WaterData,
+    DailyProgress,
+    NutritionGoals,
+    UserCreateRequest,
+    UserResponse
+)
 from .image_processor.nutrition_label import NutritionLabelProcessor
 from .image_processor.water_bottle import WaterBottleProcessor
 from .utils.calculations import calculate_daily_targets
@@ -11,6 +19,7 @@ from .firebase_manager import FirebaseManager
 import os
 from dotenv import load_dotenv
 import uvicorn
+from firebase_admin import auth
 
 load_dotenv()
 
@@ -35,7 +44,6 @@ async def process_label(image: UploadFile = File(...), user_id: str = Form(...))
         contents = await image.read()
         nutrition_data = nutrition_processor.process_image(contents)
 
-        # Automatically update daily progress
         await firebase_manager.update_daily_progress(user_id, nutrition_data.dict())
 
         return nutrition_data
@@ -49,7 +57,6 @@ async def process_water(image: UploadFile = File(...), user_id: str = Form(...))
         contents = await image.read()
         water_data = water_processor.process_image(contents)
 
-        # Automatically update daily progress
         await firebase_manager.update_daily_progress(user_id, {"water": water_data.amount})
 
         return water_data
@@ -58,10 +65,14 @@ async def process_water(image: UploadFile = File(...), user_id: str = Form(...))
 
 
 @app.post("/calculate_targets")
-async def calculate_targets(profile: UserProfile) -> Dict[str, float]:
+async def calculate_targets(user: User) -> NutritionGoals:
     try:
-        return calculate_daily_targets(profile)
+        print(f"Calculating targets for user: {user.dict()}")
+        goals = calculate_daily_targets(user)
+        print(f"Calculated goals: {goals}")
+        return goals
     except Exception as e:
+        print(f"Error calculating targets: {str(e)}")
         raise HTTPException(status_code=400, detail=str(e))
 
 
@@ -96,6 +107,71 @@ async def general_exception_handler(request, exc):
         status_code=500,
         content={"detail": str(exc)}
     )
+
+
+@app.post("/signin")
+async def signin(credentials: dict):
+    try:
+        email = credentials.get('email')
+        password = credentials.get('password')
+        user = await firebase_manager.sign_in_user(email, password)
+        return user
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.post("/create_user", response_model=UserResponse)
+async def create_user(user_data: UserCreateRequest):
+    try:
+        print(f"1. Received user data: {user_data.dict()}")
+
+        try:
+            user = auth.create_user(
+                email=user_data.email,
+                password=user_data.password
+            )
+            print(f"2. Created Firebase Auth user: {user.uid}")
+
+            profile_data = user_data.dict(exclude={'password'})
+            profile_data['id'] = user.uid
+            print(f"3. Prepared profile data: {profile_data}")
+
+            result = await firebase_manager.create_user_profile(user.uid, profile_data)
+            print(f"4. Stored user profile: {result}")
+
+            return UserResponse(**result)
+
+        except auth.EmailAlreadyExistsError:
+            raise HTTPException(
+                status_code=400,
+                detail="Email already registered"
+            )
+        except Exception as auth_error:
+            print(f"Auth Error: {str(auth_error)}")
+            raise HTTPException(
+                status_code=400,
+                detail=f"Authentication Error: {str(auth_error)}"
+            )
+
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        print(f"Unexpected error: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Server Error: {str(e)}"
+        )
+
+
+@app.get("/user/{user_id}")
+async def get_user(user_id: str) -> User:
+    try:
+        user_data = await firebase_manager.get_user(user_id)
+        if not user_data:
+            raise HTTPException(status_code=404, detail="User not found")
+        return User(**user_data)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

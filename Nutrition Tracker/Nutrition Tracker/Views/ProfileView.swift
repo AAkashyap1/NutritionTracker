@@ -17,10 +17,8 @@ struct ProfileView: View {
                         .font(.title)
                         .fontWeight(.bold)
                     
-                    if let joinDate = userViewModel.currentUser?.createdAt {
-                        Text("Active since \(joinDate.formatted(date: .abbreviated, time: .omitted))")
-                            .foregroundColor(.gray)
-                    }
+                    Text("Active since yesterday")
+                        .foregroundColor(.gray)
                 }
                 .padding(.top, 40)
                 
@@ -34,26 +32,6 @@ struct ProfileView: View {
                     StatCard(title: "Age", value: "\(userViewModel.currentUser?.age ?? 0)", icon: "number")
                 }
                 .padding(.horizontal)
-                
-                VStack(alignment: .leading, spacing: 15) {
-                    Text("Settings")
-                        .font(.headline)
-                        .padding(.horizontal)
-                    
-                    VStack(spacing: 0) {
-                        SettingsRow(icon: "gear", title: "Preferences")
-                        SettingsRow(icon: "bell", title: "Notifications")
-                        SettingsRow(icon: "target", title: "Goals")
-                        SettingsRow(icon: "arrow.counterclockwise", title: "Reset Progress")
-                        Button(action: { userViewModel.signOut() }) {
-                            SettingsRow(icon: "rectangle.portrait.and.arrow.right", title: "Sign Out")
-                        }
-                    }
-                    .background(Color.white)
-                    .cornerRadius(15)
-                    .shadow(radius: 2)
-                    .padding(.horizontal)
-                }
             }
             .navigationTitle("Profile")
         }

@@ -1,3 +1,4 @@
+
 import Foundation
 import SwiftUI
 
@@ -10,7 +11,6 @@ struct AuthenticationView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 30) {
-                // Logo and Title
                 VStack(spacing: 15) {
                     Image(systemName: "leaf.fill")
                         .font(.system(size: 60))
@@ -22,7 +22,6 @@ struct AuthenticationView: View {
                 }
                 .padding(.top, 50)
                 
-                // Input Fields
                 VStack(spacing: 20) {
                     CustomTextField(
                         icon: "envelope.fill",
@@ -41,7 +40,6 @@ struct AuthenticationView: View {
                 }
                 .padding(.horizontal)
                 
-                // Sign In Button
                 Button {
                     Task {
                         await userViewModel.signIn(email: email, password: password)
@@ -58,7 +56,6 @@ struct AuthenticationView: View {
                 .padding(.horizontal)
                 .disabled(userViewModel.isLoading)
                 
-                // Create Account Button
                 Button {
                     isSignUp = true
                 } label: {

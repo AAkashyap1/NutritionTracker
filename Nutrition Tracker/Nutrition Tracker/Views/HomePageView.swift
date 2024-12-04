@@ -97,10 +97,12 @@ struct HomePageView: View {
             .background(Color(UIColor.systemGroupedBackground))
             .navigationBarHidden(true)
             .sheet(isPresented: $imageProcessingViewModel.isShowingCamera) {
-                ImagePicker(sourceType: .camera, selectedImage: $imageProcessingViewModel.selectedImage)
+                ImagePicker(selectedImage: $imageProcessingViewModel.selectedImage, sourceType: .camera)
                     .onDisappear {
                         Task {
-                            await imageProcessingViewModel.processImage(for: .nutritionLabel)
+                            if let userId = userViewModel.currentUser?.id {
+                                await imageProcessingViewModel.processImage(for: .nutritionLabel, userId: userId)
+                            }
                         }
                     }
             }

@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import FirebaseAuth
 import Combine
@@ -12,7 +13,7 @@ class UserViewModel: ObservableObject {
     @Published var isAuthenticated = false
     
     private var cancellables = Set<AnyCancellable>()
-    private let refreshInterval: TimeInterval = 300 // 5 minutes
+    private let refreshInterval: TimeInterval = 300
     private var refreshTimer: Timer?
     
     init() {
@@ -44,8 +45,6 @@ class UserViewModel: ObservableObject {
         guard let userId = currentUser?.id else { return }
         await fetchDailyProgress(userId: userId)
     }
-    
-    // MARK: - Authentication Methods
     
     func signIn(email: String, password: String) async {
         isLoading = true
@@ -89,8 +88,6 @@ class UserViewModel: ObservableObject {
         isAuthenticated = false
     }
     
-    // MARK: - Data Fetching Methods
-    
     private func fetchInitialData(userId: String) async {
         async let progressTask = fetchDailyProgress(userId: userId)
         async let goalsTask = fetchNutritionGoals()
@@ -123,35 +120,29 @@ class UserViewModel: ObservableObject {
         }
     }
     
-    // MARK: - Image Processing Methods
-    
     func processNutritionLabel(image: Data) async {
         guard let userId = currentUser?.id else { return }
         isLoading = true
         do {
-            let nutritionData = try await NetworkManager.shared.processNutritionLabel(image: image)
-            // Backend will automatically update daily progress
+            let nutritionData = try await NetworkManager.shared.processNutritionLabel(image: image, userId: userId)
             await fetchDailyProgress(userId: userId)
         } catch {
             self.error = error as? AppError ?? .unknown
         }
         isLoading = false
     }
-    
+
     func processWaterBottle(image: Data) async {
         guard let userId = currentUser?.id else { return }
         isLoading = true
         do {
-            let waterData = try await NetworkManager.shared.processWaterBottle(image: image)
-            // Backend will automatically update daily progress
+            let waterData = try await NetworkManager.shared.processWaterBottle(image: image, userId: userId)
             await fetchDailyProgress(userId: userId)
         } catch {
             self.error = error as? AppError ?? .unknown
         }
         isLoading = false
     }
-    
-    // MARK: - Progress Update Methods
     
     func updateDailyProgress(progress: DailyProgress) async {
         guard let userId = currentUser?.id else { return }

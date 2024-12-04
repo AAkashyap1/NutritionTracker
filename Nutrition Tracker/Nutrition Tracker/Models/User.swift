@@ -1,22 +1,15 @@
-struct User: Codable, Identifiable {
+import Foundation  
+
+struct User: Codable {
     let id: String
     let email: String
-    var name: String
-    var age: Int
-    var weight: Double
-    var height: Double
-    var goalWeight: Double
-    var activityLevel: ActivityLevel
-    var gender: Gender
-    let createdAt: Date
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "user_id"
-        case email, name, age, weight, height, goalWeight
-        case activityLevel = "activity_level"
-        case gender
-        case createdAt = "created_at"
-    }
+    let name: String
+    let age: Int
+    let weight: Double
+    let height: Double
+    let goalWeight: Double
+    let activityLevel: ActivityLevel
+    let gender: Gender
 }
 
 enum ActivityLevel: String, Codable {
@@ -30,4 +23,5 @@ enum ActivityLevel: String, Codable {
 enum Gender: String, Codable {
     case male = "male"
     case female = "female"
-} 
+    case other = "other"
+}

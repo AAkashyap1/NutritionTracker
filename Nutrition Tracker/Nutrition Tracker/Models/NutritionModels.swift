@@ -30,4 +30,4 @@ struct NutritionGoals: Codable {
     var fats: Double
     var fiber: Double
     var water: Double
-} 
+}

@@ -107,7 +107,7 @@ class CreateAccountFormData: ObservableObject {
     
     func createUserProfile() -> User {
         User(
-            id: "",  // Will be set by backend
+            id: "", 
             email: email,
             name: name,
             age: Int(age) ?? 0,
@@ -115,8 +115,7 @@ class CreateAccountFormData: ObservableObject {
             height: Double(height) ?? 0,
             goalWeight: Double(goalWeight) ?? 0,
             activityLevel: activityLevel,
-            gender: gender,
-            createdAt: Date()
+            gender: gender
         )
     }
 }

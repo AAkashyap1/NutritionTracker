@@ -1,10 +1,3 @@
-//
-//  HelperViews.swift
-//  Nutrition Tracker
-//
-//  Created by Ananth Kashyap on 12/4/24.
-//
-
 import Foundation
 import SwiftUI
 

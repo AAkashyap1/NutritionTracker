@@ -1,48 +1,83 @@
-from pydantic import BaseModel, Field
-from typing import Optional
-from datetime import datetime
+from pydantic import BaseModel, EmailStr, Field
 from enum import Enum
+from typing import Optional
 
 
 class Gender(str, Enum):
-    MALE = "male"
-    FEMALE = "female"
+    male = "male"
+    female = "female"
+    other = "other"
 
 
 class ActivityLevel(str, Enum):
-    SEDENTARY = "sedentary"
-    LIGHT = "light"
-    MODERATE = "moderate"
-    VERY = "very"
-    EXTRA = "extra"
+    sedentary = "sedentary"
+    light = "light"
+    moderate = "moderate"
+    very = "very"
+    extra = "extra"
 
 
-class UserProfile(BaseModel):
-    user_id: str
-    age: int = Field(..., ge=0, le=120)
-    weight: float = Field(..., ge=20, le=500)
-    height: float = Field(..., ge=50, le=300)
-    goalWeight: float = Field(..., ge=20, le=500)
-    activityLevel: ActivityLevel
-    gender: Gender
+class User(BaseModel):
+    id: Optional[str] = None
+    email: str
+    name: str
+    age: int
+    weight: float
+    height: float
+    goalWeight: float
+    activityLevel: str
+    gender: str
+
+
+class DailyProgress(BaseModel):
+    calories: float = 0.0
+    protein: float = 0.0
+    carbs: float = 0.0
+    fats: float = 0.0
+    fiber: float = 0.0
+    water: float = 0.0
 
 
 class NutritionData(BaseModel):
-    calories: float = Field(..., ge=0)
+    calories: float
+    protein: float
+    carbs: float
+    fats: float
+    fiber: float
+
+
+class WaterData(BaseModel):
+    amount: float
+
+
+class NutritionGoals(BaseModel):
+    dailyCalories: float = Field(..., ge=0)
     protein: float = Field(..., ge=0)
     carbs: float = Field(..., ge=0)
     fats: float = Field(..., ge=0)
     fiber: float = Field(..., ge=0)
+    water: float = Field(..., ge=0)
 
 
-class WaterData(BaseModel):
-    amount: float = Field(..., ge=0)
+class UserCreateRequest(BaseModel):
+    email: str
+    password: str
+    name: str
+    age: int
+    weight: float
+    height: float
+    goalWeight: float
+    activityLevel: str
+    gender: str
 
 
-class DailyProgress(BaseModel):
-    calories: float = Field(default=0, ge=0)
-    protein: float = Field(default=0, ge=0)
-    carbs: float = Field(default=0, ge=0)
-    fats: float = Field(default=0, ge=0)
-    fiber: float = Field(default=0, ge=0)
-    water: float = Field(default=0, ge=0)
+class UserResponse(BaseModel):
+    id: str
+    email: str
+    name: str
+    age: int
+    weight: float
+    height: float
+    goalWeight: float
+    activityLevel: str
+    gender: str
