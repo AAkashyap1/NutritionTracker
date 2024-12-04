@@ -4,6 +4,8 @@ import SwiftUI
 struct AddFoodView: View {
     @EnvironmentObject var userViewModel: UserViewModel
     @StateObject private var imageProcessingViewModel = ImageProcessingViewModel()
+    @State private var showImagePicker = false
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ScrollView {
@@ -39,8 +41,10 @@ struct AddFoodView: View {
                 }
                 .padding()
                 
-                Button(action: { imageProcessingViewModel.isShowingCamera = true }) {
-                    Label("Scan Label", systemImage: "camera")
+                Button(action: {
+                    imageProcessingViewModel.isShowingCamera = true
+                }) {
+                    Label("Select Label Photo", systemImage: "photo.on.rectangle")
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.green)
@@ -53,11 +57,15 @@ struct AddFoodView: View {
             }
             .navigationTitle("Add Food")
             .sheet(isPresented: $imageProcessingViewModel.isShowingCamera) {
-                ImagePicker(selectedImage: $imageProcessingViewModel.selectedImage, sourceType: .camera)
+                ImagePicker(selectedImage: $imageProcessingViewModel.selectedImage)
                     .onDisappear {
                         Task {
                             if let userId = userViewModel.currentUser?.id {
                                 await imageProcessingViewModel.processImage(for: .nutritionLabel, userId: userId)
+                                await userViewModel.refreshDailyProgress()
+                                DispatchQueue.main.async {
+                                    dismiss()
+                                }
                             }
                         }
                     }

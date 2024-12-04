@@ -3,7 +3,8 @@ import SwiftUI
 
 struct HomePageView: View {
     @EnvironmentObject var userViewModel: UserViewModel
-    @StateObject private var imageProcessingViewModel = ImageProcessingViewModel()
+    @State private var showingAddWater = false
+    @State private var showingAddFood = false
     
     var body: some View {
         NavigationView {
@@ -77,11 +78,11 @@ struct HomePageView: View {
                             .padding(.horizontal)
                         
                         HStack(spacing: 15) {
-                            Button(action: { imageProcessingViewModel.isShowingCamera = true }) {
+                            Button(action: { showingAddWater = true }) {
                                 QuickActionButton(title: "Add Water", icon: "drop.fill", color: .blue)
                             }
                             
-                            Button(action: { imageProcessingViewModel.isShowingCamera = true }) {
+                            Button(action: { showingAddFood = true }) {
                                 QuickActionButton(title: "Add Food", icon: "fork.knife", color: .green)
                             }
                             
@@ -96,20 +97,16 @@ struct HomePageView: View {
             }
             .background(Color(UIColor.systemGroupedBackground))
             .navigationBarHidden(true)
-            .sheet(isPresented: $imageProcessingViewModel.isShowingCamera) {
-                ImagePicker(selectedImage: $imageProcessingViewModel.selectedImage, sourceType: .camera)
-                    .onDisappear {
-                        Task {
-                            if let userId = userViewModel.currentUser?.id {
-                                await imageProcessingViewModel.processImage(for: .nutritionLabel, userId: userId)
-                            }
-                        }
-                    }
+            .onAppear {
+                Task {
+                    await userViewModel.refreshDailyProgress()
+                }
             }
-            .alert("Error", isPresented: .constant(imageProcessingViewModel.error != nil)) {
-                Button("OK") { imageProcessingViewModel.clearError() }
-            } message: {
-                Text(imageProcessingViewModel.error?.localizedDescription ?? "")
+            .sheet(isPresented: $showingAddWater) {
+                AddWaterView()
+            }
+            .sheet(isPresented: $showingAddFood) {
+                AddFoodView()
             }
         }
     }

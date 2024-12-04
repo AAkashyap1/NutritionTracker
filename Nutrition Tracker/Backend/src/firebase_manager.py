@@ -80,29 +80,41 @@ class FirebaseManager:
             doc_ref = self.db.collection('users').document(user_id)\
                 .collection('daily_progress').document(today)
 
+            # Convert all values to float to ensure consistent types
+            progress_data = {k: float(v) for k, v in progress_data.items()}
+
             doc = doc_ref.get()
             if doc.exists:
                 existing_progress = doc.to_dict()
+                # Convert existing values to float as well
+                existing_progress = {k: float(v)
+                                     for k, v in existing_progress.items()}
             else:
                 existing_progress = {
-                    'calories': 0,
-                    'protein': 0,
-                    'carbs': 0,
-                    'fats': 0,
-                    'fiber': 0,
-                    'water': 0
+                    'calories': 0.0,
+                    'protein': 0.0,
+                    'carbs': 0.0,
+                    'fats': 0.0,
+                    'fiber': 0.0,
+                    'water': 0.0
                 }
 
+            # Add new values to existing values
             updated_progress = {
-                'calories': existing_progress.get('calories', 0) + progress_data.get('calories', 0),
-                'protein': existing_progress.get('protein', 0) + progress_data.get('protein', 0),
-                'carbs': existing_progress.get('carbs', 0) + progress_data.get('carbs', 0),
-                'fats': existing_progress.get('fats', 0) + progress_data.get('fats', 0),
-                'fiber': existing_progress.get('fiber', 0) + progress_data.get('fiber', 0),
-                'water': existing_progress.get('water', 0) + progress_data.get('water', 0)
+                'calories': existing_progress.get('calories', 0.0) + progress_data.get('calories', 0.0),
+                'protein': existing_progress.get('protein', 0.0) + progress_data.get('protein', 0.0),
+                'carbs': existing_progress.get('carbs', 0.0) + progress_data.get('carbs', 0.0),
+                'fats': existing_progress.get('fats', 0.0) + progress_data.get('fats', 0.0),
+                'fiber': existing_progress.get('fiber', 0.0) + progress_data.get('fiber', 0.0),
+                'water': existing_progress.get('water', 0.0) + progress_data.get('water', 0.0)
             }
 
+            # Ensure all values are float before saving
+            updated_progress = {k: float(v)
+                                for k, v in updated_progress.items()}
+
             doc_ref.set(updated_progress)
+            print(f"Successfully updated daily progress: {updated_progress}")
             return True
         except Exception as e:
             print(f"Error updating daily progress: {str(e)}")

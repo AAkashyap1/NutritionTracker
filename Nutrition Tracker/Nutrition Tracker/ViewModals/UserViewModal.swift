@@ -163,4 +163,17 @@ class UserViewModel: ObservableObject {
     deinit {
         refreshTimer?.invalidate()
     }
+    
+    func refreshDailyProgress() async {
+        if let userId = currentUser?.id {
+            do {
+                let progress = try await NetworkManager.shared.getDailyProgress(userId: userId)
+                DispatchQueue.main.async {
+                    self.dailyProgress = progress
+                }
+            } catch {
+                print("Error refreshing daily progress: \(error)")
+            }
+        }
+    }
 }
